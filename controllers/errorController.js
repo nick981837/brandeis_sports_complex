@@ -7,7 +7,7 @@ exports.logErrors = (error,req, res,next) => {
 exports.pageNotFoundError = (req, res) => {
   let errorCode = httpStatus.NOT_FOUND;
   res.status(errorCode);//set the HTTP status for the response
-  res.render("error");
+  res.render("error",{layout: false});
 };
 //500
 exports.internalServerError = (error, req, res, next) => {

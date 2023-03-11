@@ -32,7 +32,7 @@ app.get("/events", mainController.events);
 app.get("/membership", mainController.membership);
 //Contact us page
 app.get("/contact", mainController.contact);
-
+app.post("/contact", mainController.respondWithForm)
 //log erroe
 app.use(errorController.logErrors);
 //404 error handler

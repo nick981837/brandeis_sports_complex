@@ -1,0 +1,20 @@
+#about-us-img{
+    width:70%;
+}
+
+
+footer a{
+    margin-left: 15px;
+    color:white;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    margin-top: auto;
+}
+
+

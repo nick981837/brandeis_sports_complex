@@ -16,3 +16,7 @@ exports.membership = (req, res) => {
 exports.contact = (req, res) => {
   res.render("contact");
 };
+
+exports.respondWithForm = (req, res) => {
+  res.render("thankYou");
+}

@@ -50,6 +50,16 @@ h2{
     color:#003478;
 }
 
+.facilities p {
+    color:#003478;
+    font-size: 24px;
+}
+
+.facilities li {
+    color:#003478;
+    font-size: 18px;
+}
+
 .weightroom {
     display:flex;
 }

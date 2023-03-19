@@ -1,77 +1,93 @@
-#about-us-img{
-    width:70%;
+#about-us-img {
+  width: 70%;
 }
 
-
-footer a{
-    margin-left: 15px;
-    color:white;
+footer a {
+  margin-left: 15px;
+  color: white;
 }
 
-body{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-footer{
-    margin-top: auto;
+footer {
+  margin-top: auto;
 }
-h1{
-    font-size: 40px;
+h1 {
+  font-size: 40px;
 }
-h2{
-    font-size: 25px;
+h2 {
+  font-size: 25px;
 }
-.content
-{
-    display: flex;
-    align-items: center;
-    justify-content: left;
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
-.one
-{
-    margin-right: 100px;
-    float: left;  
+.one {
+  margin-right: 100px;
+  float: left;
 }
-.two
-{
-    float: right;
+.two {
+  float: right;
 }
 
 /* facilities page */
 
 .facilities {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .facilities h1 {
-    color:#003478;
+  color: #003478;
 }
 
 .facilities p {
-    color:#003478;
-    font-size: 24px;
+  color: #003478;
+  font-size: 24px;
 }
 
 .facilities li {
-    color:#003478;
-    font-size: 18px;
+  color: #003478;
+  font-size: 18px;
 }
 
 .weightroom {
-    display:flex;
+  display: flex;
 }
 
 #auerbach {
-    width:60%
+  width: 60%;
 }
 
 #gordon {
-    width:60%
+  width: 60%;
 }
 
 .weightroom {
-    width:60%
+  width: 60%;
+}
+
+/* programs page */
+
+.programs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.program-row {
+  display: flex;
+}
+
+.programs h1 {
+  color: #003478;
+}
+
+.programs .card {
+    margin: 18px;
 }

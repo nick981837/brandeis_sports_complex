@@ -16,5 +16,26 @@ body{
 footer{
     margin-top: auto;
 }
+h1{
+    font-size: 40px;
+}
+h2{
+    font-size: 25px;
+}
+.content
+{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.one
+{
+    margin-right: 100px;
+    float: left;  
+}
+.two
+{
+    float: right;
+}
 
 

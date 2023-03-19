@@ -89,5 +89,9 @@ h2 {
 }
 
 .programs .card {
-    margin: 18px;
+  margin: 18px;
+}
+
+.programs .btn {
+  background-color: #003478;
 }

@@ -38,4 +38,30 @@ h2{
     float: right;
 }
 
+/* facilities page */
 
+.facilities {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.facilities h1 {
+    color:#003478;
+}
+
+.weightroom {
+    display:flex;
+}
+
+#auerbach {
+    width:60%
+}
+
+#gordon {
+    width:60%
+}
+
+.weightroom {
+    width:60%
+}

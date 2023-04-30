@@ -1,22 +1,26 @@
-exports.about = (req, res) => {
-  res.render("about");
+module.exports = {
+  index: (req, res) => {
+    res.render("index")
+  },
+  about: (req, res) => {
+    res.render("about");
+  },
+  facilities: (req, res) => {
+    res.render("facilities");
+  },
+  programs: (req, res) => {
+    res.render("programs");
+  },
+  events: (req, res) => {
+    res.render("events");
+  },
+  membership: (req, res) => {
+    res.render("membership");
+  },
+  contact: (req, res) => {
+    res.render("contact");
+  },
+  respondWithForm: (req, res) => {
+    res.render("thankYou");
+  },
 };
-exports.facilities = (req, res) => {
-  res.render("facilities");
-};
-exports.programs = (req, res) => {
-  res.render("programs");
-};
-exports.events = (req, res) => {
-  res.render("events");
-};
-exports.membership = (req, res) => {
-  res.render("membership");
-};
-exports.contact = (req, res) => {
-  res.render("contact");
-};
-
-exports.respondWithForm = (req, res) => {
-  res.render("thankYou");
-}

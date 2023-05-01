@@ -52,7 +52,7 @@ app.use(
     methods: ["POST", "GET"],
   })
 );
-app.use("/", router);
+
 
 // Flash messages
 app.use((req, res, next) => {
@@ -64,6 +64,8 @@ app.use((req, res, next) => {
 
 //listen port 3001
 app.set("port", process.env.PORT || 3001);
+
+app.use("/", router);
 
 app.listen(app.get("port"), () => {
   console.log(

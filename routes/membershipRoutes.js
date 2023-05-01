@@ -27,4 +27,11 @@ router.delete(
   membershipsController.delete,
   membershipsController.redirectView
 );
+
+router.post(
+  "/events/:id/buy",
+  usersController.isLoggedIn,
+  membershipsController.buy,
+  membershipsController.redirectView
+);
 module.exports = router;

@@ -118,6 +118,24 @@ module.exports = {
         next();
       });
   },
+  buy: (req, res, next) => {
+    let membershipId = req.params.id;
+    User.findByIdAndUpdate(res.locals.currentUser._id, {
+      $addToSet: { memberships: membershipId },
+      },
+    ).then((user) => {
+      req.flash(
+        "success",
+        `${user.name} buy memberhsip successfully!`
+      );
+      res.locals.redirect = `/users/${res.locals.currentUser._id}`;
+      next();
+    })
+    .catch((error) => {
+      console.log(`Error : ${error.message}`);
+      next(error);
+    });
+  },
   // validate the form data
   validate: (req, res, next) => {
     req.check("type", "Type cannot be empty").notEmpty();

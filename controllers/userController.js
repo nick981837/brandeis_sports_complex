@@ -5,7 +5,7 @@ const getUserParams = (body) => {
   return {
     name: body.name,
     email: body.email,
-    memberships: body.memberships,
+    // memberships: body.memberships,
     isAdmin: body.isAdmin,
   };
 };

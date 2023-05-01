@@ -1,0 +1,15 @@
+<div class="data-form">
+  <form method="POST" action="<%=`/memberships/${membership._id}/update?_method=PUT`%>">
+    <h2>Edit Membership:</h2>
+    <label for="type">Membership Type:</label>
+    <input type="text" id="type" name="type" value="<%= membership.type %>" required>
+
+    <label for="duration">Duration:</label>
+    <input type="number" id="duration" name="duration" value="<%= membership.duration %>"  required>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price"  value="<%= membership.price %>"  required>
+
+    <button type="submit" class="btn btn-primary mt-3 mb-3" >Update</button>
+  </form>
+</div>

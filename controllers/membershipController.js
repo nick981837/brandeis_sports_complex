@@ -1,4 +1,4 @@
-const Membership = require("../model/memvership");
+const Membership = require("../model/membership");
 
 // Function to get membership parameters from request body and locals
 const getMembershipParams = (body) => {
@@ -13,9 +13,10 @@ const getMembershipParams = (body) => {
 module.exports = {
   // GET route for displaying all membership
   index: (req, res, next) => {
+    console.log("I am here index")
     Membership.find({})
       .then((membership) => {
-        res.locals.membership = membership;
+        res.locals.memberships = membership;
         next();
       })
       .catch((error) => {
@@ -23,13 +24,13 @@ module.exports = {
         next(error);
       });
   },
-  // GET route for rendering memberhsip index page
+  // GET route for rendering membership index page
   indexView: (req, res) => {
-    res.render("memberhsip/index");
+    res.render("membership/index");
   },
-  // GET route for rendering new memberhsip form
+  // GET route for rendering new membership form
   new: (req, res) => {
-    res.render("memberhsip/new");
+    res.render("membership/new");
   },
   // POST route for creating a new event
   create: (req, res, next) => {
@@ -37,14 +38,14 @@ module.exports = {
     let newmembership = new Membership(getMembershipParams(req.body));
     newmembership
       .save()
-      .then((memberhsip) => {
-        req.flash("success", `${memberhsip.name} was posted successfully!`);
-        res.locals.redirect = "/memberhsips";
+      .then((membership) => {
+        req.flash("success", `${membership.name} was posted successfully!`);
+        res.locals.redirect = "/memberships";
         next();
       })
       .catch((error) => {
-        req.flash("error", `Failed to create a new memberhsip because: ${error.message}.`);
-        res.locals.redirect = "/memberhsip/new";
+        req.flash("error", `Failed to create a new membership because: ${error.message}.`);
+        res.locals.redirect = "/membership/new";
         next();
       });
   },
@@ -56,62 +57,64 @@ module.exports = {
   },
   // GET route for displaying a single membership
   show: (req, res, next) => {
-    let memberhsipId = req.params.id;
-    Membership.findById(memberhsipId)
-      .then((memberhsip) => {
-        res.locals.memberhsip = memberhsip;
+    let membershipId = req.params.id;
+    Membership.findById(membershipId)
+      .then((membership) => {
+        res.locals.membership = membership;
         next();
       })
       .catch((error) => {
-        console.log(`Error fetching memberhsip by ID: ${error.message}`);
+        console.log(`Error fetching membership by ID: ${error.message}`);
         next(error);
       });
   },
   // GET route for rendering single membership page
   showView: (req, res) => {
-    res.render("memberhsip/show");
+    res.render("membership/show");
   },
   // GET route for rendering membership edit form
   edit: (req, res, next) => {
-    let memberhsipId = req.params.id;
-    Membership.findById(memberhsipId)
-      .then((memberhsip) => {
-        res.render("memberhsip/edit", {
-          memberhsip: memberhsip,
+    let membershipId = req.params.id;
+    Membership.findById(membershipId)
+      .then((membership) => {
+        res.render("membership/edit", {
+          membership: membership,
         });
       })
       .catch((error) => {
-        console.log(`Error fetching memberhsip by ID: ${error.message}`);
+        console.log(`Error fetching membership by ID: ${error.message}`);
         next(error);
       });
   },
   // PUT route to update the membership
   update: (req, res, next) => {
-    let memberhsipId = req.params.id,
+    let membershipId = req.params.id,
       membershipParams = getMembershipParams(req.body);
-    Membership.findByIdAndUpdate(memberhsipId, {
+    console.log("hi I am here")
+    Membership.findByIdAndUpdate(membershipId, {
       $set: membershipParams,
     })
-      .then((memberhsip) => {
-        res.locals.redirect = `/memberhsips/${memberhsipId}`;
-        res.locals.memberhsip = memberhsip;
+      .then((membership) => {
+        res.locals.redirect = `/memberships/${membershipId}`;
+        res.locals.membership = membership;
         next();
       })
       .catch((error) => {
-        console.log(`Error updating memberhsip by ID: ${error.message}`);
+        console.log(`Error updating membership by ID: ${error.message}`);
         next(error);
       });
   },
   // DELETE route to delete a event
   delete: (req, res, next) => {
-    let memberhsipId = req.params.id;
-    Membership.findByIdAndRemove(memberhsipId)
+    console.log("I am here delete")
+    let membershipId = req.params.id;
+    Membership.findByIdAndRemove(membershipId)
       .then(() => {
-        res.locals.redirect = "/memberhsips";
+        res.locals.redirect = "/memberships";
         next();
       })
       .catch((error) => {
-        console.log(`Error deleting memberhsip by ID: ${error.message}`);
+        console.log(`Error deleting membership by ID: ${error.message}`);
         next();
       });
   },
@@ -127,8 +130,8 @@ module.exports = {
         req.flash("error", messages);
         if (req.method === "PUT") {
           console.log("error put");
-          let memberhsipId = req.params.id;
-          res.redirect(`/memberships/${memberhsipId}/edit`);
+          let membershipId = req.params.id;
+          res.redirect(`/memberships/${membershipId}/edit`);
         }
         else {
           res.locals.redirect = "/memberships/new";

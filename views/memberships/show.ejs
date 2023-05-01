@@ -1,0 +1,26 @@
+
+<h1>Membership Data for <%= membership.type %></h1>
+<table>
+  <tr>
+    <th>Type</th>
+    <td><%= membership.type %></td>
+  </tr>
+  <tr>
+    <th>Duration</th>
+    <td><%= membership.duration %></td>
+  </tr>
+  <tr>
+    <th>Price</th>
+    <td><%= membership.price %></td>
+  </tr>
+</table>
+
+<div>
+  <a href="/memberships">View all Memberships</a>
+</div>
+<div>
+  <a href="<%=`/memberships/${membership._id}/edit`%>">Edit Membership Details</a>
+</div>
+<div>
+  <a href="<%= `/memberships/${membership._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this membership?')">Delete</a>
+</div>

@@ -18,9 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded());
 //enable layouts
 app.use(layouts);
-
 //listen port 3001
 app.set("port", process.env.PORT || 3001);
+router.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 app.use("/", router);
 app.listen(app.get("port"), () => {

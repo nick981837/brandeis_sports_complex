@@ -91,6 +91,7 @@ module.exports = {
       $set: facilityParams,
     })
       .then((facility) => {
+        req.flash("success", `${facility.name} was updated successfully!`);
         res.locals.redirect = `/facilities/${facilityId}`;
         res.locals.facility = facility;
         next();
@@ -105,6 +106,7 @@ module.exports = {
     let facilityId = req.params.id;
     Facility.findByIdAndRemove(facilityId)
       .then(() => {
+        req.flash("success", `Facility was deleted successfully!`);
         res.locals.redirect = "/facilities";
         next();
       })

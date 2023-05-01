@@ -1,9 +1,9 @@
 const Program = require("../model/program");
 // Function to get program parameters from request body and locals
-const getprogramParams = (body) => {
+const getProgramParams = (body) => {
   return {
     name: body.name,
-    schedule: body.type,
+    schedule: body.schedule,
     description: body.description,
     instructor: body.instructor
   };
@@ -33,7 +33,7 @@ module.exports = {
   // POST route for creating a new event
   create: (req, res, next) => {
     if (req.skip) return next();
-    let newprogram = new Program(getprogramParams(req.body));
+    let newprogram = new Program(getProgramParams(req.body));
     newprogram
       .save()
       .then((program) => {
@@ -87,11 +87,12 @@ module.exports = {
   // PUT route to update the program
   update: (req, res, next) => {
     let programId = req.params.id,
-      programParams = getprogramParams(req.body);
+      programParams = getProgramParams(req.body);
     Program.findByIdAndUpdate(programId, {
       $set: programParams,
     })
       .then((program) => {
+        req.flash("success", `${program.name} was updated successfully!`);
         res.locals.redirect = `/programs/${programId}`;
         res.locals.program = program;
         next();
@@ -106,6 +107,7 @@ module.exports = {
     let programId = req.params.id;
     Program.findByIdAndRemove(programId)
       .then(() => {
+        req.flash("success", `Program was deleted successfully!`);
         res.locals.redirect = "/programs";
         next();
       })
@@ -116,7 +118,6 @@ module.exports = {
   },
   // validate the form data
   validate: (req, res, next) => {
-    let programId = req.params.id;
     req.check("name", "Name cannot be empty").notEmpty();
     req.check("schedule", "Schedule cannot be empty").notEmpty();
     req.check("instructor", "Instructor cannot be empty").notEmpty();
@@ -126,7 +127,9 @@ module.exports = {
         let messages = error.array().map((e) => e.msg);
         req.skip = true;
         req.flash("error", messages);
+        console.log(messages);
         if (req.method === "PUT") {
+          let programId = req.params.id;
           res.redirect(`/programs/${programId}/edit`);
         }
         else {

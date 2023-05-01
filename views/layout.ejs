@@ -24,10 +24,10 @@
               <a class="h4 m-2 nav-link text-white" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="programs" >Programs</a>
+              <a class="h4 m-2 nav-link text-white" href="/programs" >Programs</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="facilities">Facilities</a>
+              <a class="h4 m-2 nav-link text-white" href="/facilities">Facilities</a>
             </li>
             <li class="nav-item">
               <a class="h4 m-2 nav-link text-white" href="memberships" >Membership</a>
@@ -44,6 +44,16 @@
           </ul>
         </div>
       </nav>
+      <% if (flashMessages) { %> <% if (flashMessages.success) { %>
+        <div class="alert alert-success" style="margin-bottom:0px"><%= flashMessages.success %></div>
+        <%} else if (flashMessages.error){ %>
+          <ul class="alert alert-danger" style="margin-bottom:0px">
+          <% for(let i=0; i<flashMessages.error.length; i++) { %>
+            <li > 
+            <%= flashMessages.error[i] %></div>
+          <% } %>
+          </ul>
+        <%} %> <%} %>
     </header>
     <%- body%>
     <footer class="bg-light text-center text-lg-star">

@@ -61,6 +61,8 @@ module.exports = {
     User.findById(userId)
       .then((user) => {
         res.locals.user = user;
+        console.log(res.locals.user);
+        console.log(user);
         next();
       })
       .catch((error) => {
@@ -70,7 +72,9 @@ module.exports = {
   },
 
   showView: (req, res) => {
-    res.render("users/show");
+    console.log(res.locals.user);
+    const user = res.locals.user; // Get user object from res.locals
+    res.render("users/show", { user });
   },
 
   edit: (req, res, next) => {
@@ -191,18 +195,17 @@ module.exports = {
 
   isAdminOrSelf: (req, res, next) => {
     if (req.isAuthenticated()) {
-      next();
+      if (req.user._id !== undefined && req.user._id == req.params.id) {
+        next();
+      } else if (req.user.isAdmin) {
+        next();
+      } else {
+        req.flash("error", "You are not authorized to perform this action.");
+        res.redirect("/");
+      }
     } else {
       req.flash("error", "Please sign in.");
       res.redirect("/users/login");
-    }
-    if (req.user._id == req.params.id) {
-      next();
-    } else if (req.user.isAdmin) {
-      next();
-    } else {
-      req.flash("error", "You are not authorized to perform this action.");
-      res.redirect("/");
     }
   },
 };

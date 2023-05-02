@@ -66,17 +66,31 @@
             <li class="nav-item">
               <a class="h4 m-2 nav-link text-white" href="contact">Contact</a>
             </li>
+            <% if (loggedIn) { %>
             <li class="nav-item">
-              <% if (loggedIn) { %> Logged in as
-              <a href="<%=`/users/${currentUser._id}`%>"
+              <a
+                href="<%=`/users/${currentUser._id}`%>"
+                class="h4 m-2 nav-link text-blue bg-white"
                 ><%= currentUser.name %></a
               >
-
-              <a href="/users/logout">Log out</a>
-              <%} else {%>
-              <a href="/users/login">Log In</a>
-              <% } %>
             </li>
+            <li class="nav-item">
+              <a href="/users/logout" class="h4 m-2 nav-link text-blue bg-white"
+                >Log out</a
+              >
+            </li>
+            <%} else {%>
+            <li class="nav-item">
+              <a href="/users/login" class="h4 m-2 nav-link text-blue bg-white"
+                >Log In</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/users/new" class="h4 m-2 nav-link text-blue bg-white"
+                >Sign Up</a
+              >
+            </li>
+            <% } %>
           </ul>
         </div>
       </nav>

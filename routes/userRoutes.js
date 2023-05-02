@@ -19,10 +19,16 @@ router.get(
   userController.show,
   userController.showView
 );
-router.get("/:id/edit", userController.edit);
-router.put("/:id/update", userController.update, userController.redirectView);
+router.get("/:id/edit", userController.isAdminOrSelf, userController.edit);
+router.put(
+  "/:id/update",
+  userController.isAdminOrSelf,
+  userController.update,
+  userController.redirectView
+);
 router.delete(
   "/:id/delete",
+  userController.isAdminOrSelf,
   userController.delete,
   userController.redirectView
 );

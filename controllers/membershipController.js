@@ -1,4 +1,5 @@
 const Membership = require('../model/membership');
+const User = require('../model/user');
 
 // Function to get membership parameters from request body and locals
 const getMembershipParams = (body) => {
@@ -13,7 +14,6 @@ const getMembershipParams = (body) => {
 module.exports = {
   // GET route for displaying all membership
   index: (req, res, next) => {
-    console.log('I am here index');
     Membership.find({})
         .then((membership) => {
           res.locals.memberships = membership;

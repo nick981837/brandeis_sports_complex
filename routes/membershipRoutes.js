@@ -29,7 +29,7 @@ router.delete(
 );
 
 router.post(
-    '/events/:id/buy',
+    '/:id/buy',
     usersController.isLoggedIn,
     membershipsController.buy,
     membershipsController.redirectView,

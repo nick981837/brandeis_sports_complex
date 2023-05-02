@@ -175,6 +175,12 @@ module.exports = {
   },
 
   isAdmin: (req, res, next) => {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      req.flash("error", "Please sign in.");
+      res.redirect("/users/login");
+    }
     if (req.currentUser.isAdmin) {
       next();
     } else {

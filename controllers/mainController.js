@@ -1,26 +1,26 @@
 module.exports = {
   index: (req, res) => {
-    res.render("index")
+    res.render('index');
   },
   about: (req, res) => {
-    res.render("about");
+    res.render('about');
   },
   facilities: (req, res) => {
-    res.render("facilities");
+    res.render('facilities');
   },
   programs: (req, res) => {
-    res.render("programs");
+    res.render('programs');
   },
   events: (req, res) => {
-    res.render("events");
+    res.render('events');
   },
   membership: (req, res) => {
-    res.render("membership");
+    res.render('membership');
   },
   contact: (req, res) => {
-    res.render("contact");
+    res.render('contact');
   },
   respondWithForm: (req, res) => {
-    res.render("thankYou");
+    res.render('thankYou');
   },
 };

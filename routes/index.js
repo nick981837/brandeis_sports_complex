@@ -1,17 +1,17 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const userRoutes = require("./userRoutes"),
-  errorRoutes = require("./errorRoutes"),
-  mainRoutes = require("./mainRoutes"),
-  facilityRoutes = require("./facilityRoutes"),
-  programRoutes = require("./programRoutes"),
-  membershipRoutes = require("./membershipRoutes")
-  
-router.use("/users", userRoutes);
-router.use("/facilities", facilityRoutes);
-router.use("/programs", programRoutes);
-router.use("/memberships",membershipRoutes);
-router.use("/", mainRoutes);
-router.use("/", errorRoutes);
+const userRoutes = require('./userRoutes');
+const errorRoutes = require('./errorRoutes');
+const mainRoutes = require('./mainRoutes');
+const facilityRoutes = require('./facilityRoutes');
+const programRoutes = require('./programRoutes');
+const membershipRoutes = require('./membershipRoutes');
+
+router.use('/users', userRoutes);
+router.use('/facilities', facilityRoutes);
+router.use('/programs', programRoutes);
+router.use('/memberships', membershipRoutes);
+router.use('/', mainRoutes);
+router.use('/', errorRoutes);
 
 module.exports = router;

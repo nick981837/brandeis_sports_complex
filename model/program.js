@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const programSchema = mongoose.Schema({
   name: {
@@ -13,10 +13,10 @@ const programSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  instructor:{
-      type: String,
-      required: true,
-  }
+  instructor: {
+    type: String,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("Program", programSchema);
+module.exports = mongoose.model('Program', programSchema);

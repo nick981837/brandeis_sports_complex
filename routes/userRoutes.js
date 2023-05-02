@@ -8,6 +8,7 @@ router.post(
     '/create',
     userController.validate,
     userController.create,
+    userController.authenticate,
     userController.redirectView,
 );
 router.get('/login', userController.login);

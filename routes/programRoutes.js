@@ -5,6 +5,7 @@ router.use(expressValidator());
 const connectFlash = require('connect-flash');
 const expressSession = require('express-session');
 const methodOverride = require('method-override');
+const userController = require("../controllers/userController");
 router.use(connectFlash());
 router.use(
     expressSession({
@@ -29,17 +30,19 @@ router.use(connectFlash());
 // Handle routes for job models
 router.get('/', programController.index, programController.indexView);
 router.get('/new', programController.new);
-router.post('/create', programController.validate, programController.create, programController.redirectView);
+router.post('/create', userController.isLoggedIn, programController.validate, programController.create, programController.redirectView);
 router.get('/:id', programController.show, programController.showView);
-router.get('/:id/edit', programController.edit);
+router.get('/:id/edit', userController.isLoggedIn,programController.edit);
 router.put(
     '/:id/update',
+    userController.isLoggedIn,
     programController.validate,
     programController.update,
     programController.redirectView,
 );
 router.delete(
     '/:id/delete',
+    userController.isLoggedIn,
     programController.delete,
     programController.redirectView,
 );

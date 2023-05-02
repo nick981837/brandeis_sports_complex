@@ -1,73 +1,129 @@
 <html>
   <head>
     <title>Brandeis Sport Complex</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <header>
-      <link rel="stylesheet" href="/style.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+      <link rel="stylesheet" href="/style.css" />
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+        crossorigin="anonymous"
+      />
       <div class="container">
         <div class="row justify-content-center align-items-center ml-0">
           <div class="col-2 align-items-center">
-            <img id="BrandeisLogo" src="/images/BrandeisLogo.png" width="80" alt="BrandeisLogo">
+            <img
+              id="BrandeisLogo"
+              src="/images/BrandeisLogo.png"
+              width="80"
+              alt="BrandeisLogo"
+            />
           </div>
           <div class="col-6">
-            <h1 style = "color:#003478">Brandeis Sport Complex </h1>
+            <h1 style="color: #003478">Brandeis Sport Complex</h1>
           </div>
         </div>
       </div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0 ">
-        <div class="collapse navbar-collapse justify-content-md-around" id="navbarNavDropdown" style = "background-color:#003478">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0">
+        <div
+          class="collapse navbar-collapse justify-content-md-around"
+          id="navbarNavDropdown"
+          style="background-color: #003478"
+        >
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="h4 m-2 nav-link text-white" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="/programs" >Programs</a>
+              <a class="h4 m-2 nav-link text-white" href="/programs"
+                >Programs</a
+              >
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="/facilities">Facilities</a>
+              <a class="h4 m-2 nav-link text-white" href="/facilities"
+                >Facilities</a
+              >
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="memberships" >Membership</a>
+              <a class="h4 m-2 nav-link text-white" href="memberships"
+                >Membership</a
+              >
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="events" >Events</a>
+              <a class="h4 m-2 nav-link text-white" href="events">Events</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="about" >About</a>
+              <a class="h4 m-2 nav-link text-white" href="about">About</a>
             </li>
             <li class="nav-item">
               <a class="h4 m-2 nav-link text-white" href="contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <% if (loggedIn) { %> Logged in as
+              <a href="<%=`/users/${currentUser._id}`%>"
+                ><%= currentUser.name %></a
+              >
+
+              <a href="/users/logout">Log out</a>
+              <%} else {%>
+              <a href="/users/login">Log In</a>
+              <% } %>
             </li>
           </ul>
         </div>
       </nav>
       <% if (flashMessages) { %> <% if (flashMessages.success) { %>
-        <div class="alert alert-success" style="margin-bottom:0px"><%= flashMessages.success %></div>
-        <%} else if (flashMessages.error){ %>
-          <ul class="alert alert-danger" style="margin-bottom:0px">
-          <% for(let i=0; i<flashMessages.error.length; i++) { %>
-            <li > 
-            <%= flashMessages.error[i] %></div>
-          <% } %>
-          </ul>
-        <%} %> <%} %>
+      <div class="alert alert-success" style="margin-bottom: 0px">
+        <%= flashMessages.success %>
+      </div>
+      <%} else if (flashMessages.error){ %>
+      <div class="alert alert-danger" style="margin-bottom: 0px">
+        <%= flashMessages.error %>
+      </div>
+
+      <%} %> <%} %>
     </header>
     <%- body%>
     <footer class="bg-light text-center text-lg-star">
       <!-- Copyright -->
-      <div class="text-white text-center p-3" style="background-color: #003478;">
+      <div class="text-white text-center p-3" style="background-color: #003478">
         <a>415 SOUTH STREET, WALTHAM, MA 02453</a>
         <a>&nbsp(781) 736-3668</a>
-        <a class="h6 text-white" href="mailto:SPORTSINFO@BRANDEIS.EDU">CONTACT: SPORTSINFO@BRANDEIS.EDU</a>
-        <a class="h6 text-white" href="https://www.facebook.com/brandeisjudges"><i class="fab fa-facebook-f"></i></a>
-        <a class="h6 text-white" href="https://twitter.com/BrandeisJudges"><i class="fab fa-twitter"></i></a>
-        <a class="h6 text-white" href="https://www.instagram.com/brandeisjudges/"><i class="fab fa-instagram"></i></a>
-        <a class="h6 text-white" href="https://www.youtube.com/user/brandeisjudges"><i class="fab fa-youtube"></i></a>
+        <a class="h6 text-white" href="mailto:SPORTSINFO@BRANDEIS.EDU"
+          >CONTACT: SPORTSINFO@BRANDEIS.EDU</a
+        >
+        <a class="h6 text-white" href="https://www.facebook.com/brandeisjudges"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a class="h6 text-white" href="https://twitter.com/BrandeisJudges"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a
+          class="h6 text-white"
+          href="https://www.instagram.com/brandeisjudges/"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          class="h6 text-white"
+          href="https://www.youtube.com/user/brandeisjudges"
+          ><i class="fab fa-youtube"></i
+        ></a>
       </div>
-      <div class="text-white text-center p-3" style="background-color: #003478;"><a class="h6 text-white" href="https://github.com/MohammadiHadi/GPA1-M-Brandeis-Sport-Complex">© 2023 Copyright: Brandeis Sport Complex</a></div>
+      <div class="text-white text-center p-3" style="background-color: #003478">
+        <a
+          class="h6 text-white"
+          href="https://github.com/MohammadiHadi/GPA1-M-Brandeis-Sport-Complex"
+          >© 2023 Copyright: Brandeis Sport Complex</a
+        >
+      </div>
       <!-- Copyright -->
     </footer>
   </body>

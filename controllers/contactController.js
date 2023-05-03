@@ -47,7 +47,7 @@ module.exports = {
         })
         .catch((error) => {
           req.flash('error', `Failed to create a new contact because: ${error.message}.`);
-          res.locals.redirect = '/contacts/new';
+          res.locals.redirect = '/contact/new';
           next();
         });
   },
@@ -147,4 +147,19 @@ module.exports = {
       }
     });
   },
+  // response: (req, res, next) => {
+  //   Contact.find({})
+  //       .then((contact) => {
+  //         res.locals.contacts = contact;
+  //         next();
+  //       })
+  //       .catch((error) => {
+  //         console.log(`Error fetching contacts: ${error.message}`);
+  //         next(error);
+  //       });
+  // },
+  // // GET route for rendering contact index page
+  // indexView: (req, res) => {
+  //   res.render('contact/response');
+  // },
 };

@@ -13,6 +13,7 @@ const getUserParams = (body) => {
 module.exports = {
   index: (req, res, next) => {
     User.find()
+      .populate("memberships")
       .then((users) => {
         res.locals.users = users;
         next();
@@ -59,6 +60,7 @@ module.exports = {
   show: (req, res, next) => {
     const userId = req.params.id;
     User.findById(userId)
+      .populate("memberships")
       .then((user) => {
         res.locals.user = user;
         console.log(res.locals.user);

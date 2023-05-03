@@ -4,6 +4,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Memberships</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,11 @@
     <tr>
       <td><a href="<%= `/users/${user._id}`%>"><%= user.name %></a></td>
       <td><%= user.email %></td>
+      <td>
+      <% user.memberships.forEach(function(membership) { %>
+        <%= membership.type %><br>
+      <% }); %>
+    </td>
       <td>
         <a href="<%=`/users/${user._id}/edit` %>"> Edit </a>
       </td>

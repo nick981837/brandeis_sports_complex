@@ -110,3 +110,9 @@ h2 {
   padding:32px;
   margin:32px;
 }
+
+/* user index page */
+
+.user-index {
+  max-width: 500px;
+}

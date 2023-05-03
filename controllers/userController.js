@@ -59,10 +59,9 @@ module.exports = {
   show: (req, res, next) => {
     const userId = req.params.id;
     User.findById(userId)
+      .populate("memberships")
       .then((user) => {
         res.locals.user = user;
-        console.log(res.locals.user);
-        console.log(user);
         next();
       })
       .catch((error) => {
@@ -72,7 +71,6 @@ module.exports = {
   },
 
   showView: (req, res) => {
-    console.log(res.locals.user);
     const user = res.locals.user; // Get user object from res.locals
     res.render("users/show", { user });
   },

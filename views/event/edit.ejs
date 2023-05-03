@@ -1,0 +1,19 @@
+<div class="data-form">
+    <form method="POST" action="<%=`/events/${event._id}/update?_method=PUT`%>">
+      <h2>Edit Event:</h2>
+
+      <label for="type">name:</label>
+      <input type="String" id="name" name="name" value="<%= event.name %>" required>
+      
+      <label for="description">description</label>
+      <input type="Strng" id="description" name="description" value="<%= event.description %>" required>
+  
+      <label for="date">date</label>
+      <input type="Date" id="date" name="date" value="<%= event.date %>"  required>
+  
+      <label for="location">location</label>
+      <input type="String" id="location" name="location"  value="<%= event.location %>"  required>
+  
+      <button type="submit" class="btn btn-primary mt-3 mb-3" >Update</button>
+    </form>
+  </div>

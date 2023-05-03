@@ -1,5 +1,4 @@
 const userController = require("../controllers/userController");
-const userContoller = require("../controllers/userController");
 const router = require("express").Router();
 
 router.get("/", userController.index, userController.indexView);

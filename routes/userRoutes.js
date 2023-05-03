@@ -1,7 +1,12 @@
 const userController = require("../controllers/userController");
 const router = require("express").Router();
 
-router.get("/", userController.index, userController.indexView);
+router.get(
+  "/",
+  userController.isAdmin,
+  userController.index,
+  userController.indexView
+);
 router.get("/new", userController.new);
 router.post(
   "/create",

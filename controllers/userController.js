@@ -180,16 +180,15 @@ module.exports = {
 
   isAdmin: (req, res, next) => {
     if (req.isAuthenticated()) {
-      next();
+      if (req.user.isAdmin) {
+        next();
+      } else {
+        req.flash("error", "You are not an admin.");
+        res.redirect("/");
+      }
     } else {
       req.flash("error", "Please sign in.");
       res.redirect("/users/login");
-    }
-    if (req.currentUser.isAdmin) {
-      next();
-    } else {
-      req.flash("error", "You are not an admin.");
-      res.redirect("/");
     }
   },
 

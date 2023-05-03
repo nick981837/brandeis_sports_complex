@@ -6,7 +6,7 @@ const connectFlash = require('connect-flash');
 const expressSession = require('express-session');
 const methodOverride = require('method-override');
 router.use(connectFlash());
-const userController = require("../controllers/userController");
+const userController = require('../controllers/userController');
 router.use(
     expressSession({
       secret: 'secret_passcode',

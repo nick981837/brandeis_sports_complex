@@ -1,40 +1,40 @@
-const userController = require("../controllers/userController");
-const router = require("express").Router();
+const userController = require('../controllers/userController');
+const router = require('express').Router();
 
 router.get(
-  "/",
-  userController.isAdmin,
-  userController.index,
-  userController.indexView
+    '/',
+    userController.isAdmin,
+    userController.index,
+    userController.indexView,
 );
-router.get("/new", userController.new);
+router.get('/new', userController.new);
 router.post(
-  "/create",
-  userController.validate,
-  userController.create,
-  userController.redirectView
+    '/create',
+    userController.validate,
+    userController.create,
+    userController.redirectView,
 );
-router.get("/login", userController.login);
-router.post("/login", userController.authenticate);
-router.get("/logout", userController.logout, userController.redirectView);
+router.get('/login', userController.login);
+router.post('/login', userController.authenticate);
+router.get('/logout', userController.logout, userController.redirectView);
 router.get(
-  "/:id",
-  userController.isAdminOrSelf,
-  userController.show,
-  userController.showView
+    '/:id',
+    userController.isAdminOrSelf,
+    userController.show,
+    userController.showView,
 );
-router.get("/:id/edit", userController.isAdminOrSelf, userController.edit);
+router.get('/:id/edit', userController.isAdminOrSelf, userController.edit);
 router.put(
-  "/:id/update",
-  userController.isAdminOrSelf,
-  userController.update,
-  userController.redirectView
+    '/:id/update',
+    userController.isAdminOrSelf,
+    userController.update,
+    userController.redirectView,
 );
 router.delete(
-  "/:id/delete",
-  userController.isAdminOrSelf,
-  userController.delete,
-  userController.redirectView
+    '/:id/delete',
+    userController.isAdminOrSelf,
+    userController.delete,
+    userController.redirectView,
 );
 
 module.exports = router;

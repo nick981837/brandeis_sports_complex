@@ -3,8 +3,8 @@ const router = require('express').Router();
 const eventsController = require('../controllers/eventController');
 const usersController = require('../controllers/userController');
 
-// jobs Routes
-// add usersController.isLoggedIn later
+// Events Routes
+
 router.get('/', eventsController.index, eventsController.indexView);
 router.get('/new', usersController.isLoggedIn, usersController.isAdmin,eventsController.new);
 router.post(

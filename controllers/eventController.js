@@ -112,7 +112,7 @@ module.exports = {
     const eventId = req.params.id;
     Event.findByIdAndRemove(eventId)
         .then(() => {
-          res.locals.redirect = '/eventps';
+          res.locals.redirect = '/events';
           next();
         })
         .catch((error) => {

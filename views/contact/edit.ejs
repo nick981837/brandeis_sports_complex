@@ -1,0 +1,19 @@
+<div class="data-form">
+    <form method="POST" action="<%=`/contacts/${contact._id}/update?_method=PUT`%>">
+      <h2>Edit Contact:</h2>
+
+      <label for="name">name:</label>
+      <input type="String" id="name" name="name" value="<%= contact.name %>" required>
+      
+      <label for="email">email</label>
+      <input type="String" id="email" name="email" value="<%= contact.email %>" required>
+  
+      <label for="subject">subject</label>
+      <input type="String" id="subject" name="subject" value="<%= contact.subject %>"  required>
+  
+      <label for="message">message</label>
+      <input type="String" id="message" name="message"  value="<%= contact.message %>"  required>
+  
+      <button type="submit" class="btn btn-primary mt-3 mb-3" >Update</button>
+    </form>
+  </div>

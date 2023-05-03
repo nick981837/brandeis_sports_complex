@@ -11,6 +11,8 @@ const getUserParams = (body) => {
 };
 
 module.exports = {
+  // get /users
+  // only available to admins
   index: (req, res, next) => {
     User.find()
       .then((users) => {
@@ -27,10 +29,11 @@ module.exports = {
     res.render("users/index");
   },
 
+  // get /users/new
   new: (req, res) => {
     res.render("users/new");
   },
-
+  // post //users/new
   create: (req, res, next) => {
     if (req.skip) return next();
     const newUser = new User(getUserParams(req.body));
@@ -56,6 +59,8 @@ module.exports = {
     else next();
   },
 
+  // get /users/:id
+  // Can only view own id unless admin
   show: (req, res, next) => {
     const userId = req.params.id;
     User.findById(userId)
@@ -75,6 +80,7 @@ module.exports = {
     res.render("users/show", { user });
   },
 
+  // get /users/:id/edit
   edit: (req, res, next) => {
     const userId = req.params.id;
     User.findById(userId)
@@ -89,6 +95,7 @@ module.exports = {
       });
   },
 
+  // put /users/:id/update
   update: (req, res, next) => {
     const userId = req.params.id;
     const userParams = {
@@ -112,6 +119,7 @@ module.exports = {
       });
   },
 
+  // delete /users/:id/delete
   delete: (req, res, next) => {
     const userId = req.params.id;
     User.findByIdAndRemove(userId)
@@ -126,10 +134,12 @@ module.exports = {
       });
   },
 
+  // get /users/login
   login: (req, res) => {
     res.render("users/login");
   },
 
+  // get /users/logout
   logout: (req, res, next) => {
     req.logout(function (err) {
       if (err) {
@@ -141,6 +151,8 @@ module.exports = {
     });
   },
 
+  // Authenticates with passport
+  // post /users/login
   authenticate: passport.authenticate("local", {
     failureRedirect: "/users/login",
     failureFlash: "Failed to login.",
@@ -167,6 +179,7 @@ module.exports = {
     });
   },
 
+  // True if logged in
   isLoggedIn: (req, res, next) => {
     if (req.isAuthenticated()) {
       next();
@@ -176,6 +189,7 @@ module.exports = {
     }
   },
 
+  // True if isAdmin
   isAdmin: (req, res, next) => {
     if (req.isAuthenticated()) {
       if (req.user.isAdmin) {
@@ -190,6 +204,7 @@ module.exports = {
     }
   },
 
+  // True if requesting user is access own resource or is admin
   isAdminOrSelf: (req, res, next) => {
     if (req.isAuthenticated()) {
       if (req.user._id !== undefined && req.user._id == req.params.id) {

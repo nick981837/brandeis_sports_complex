@@ -79,7 +79,13 @@
                 >Log out</a
               >
             </li>
-            <%} else {%>
+            <% if (currentUser.isAdmin) {%>
+            <li class="nav-item">
+              <a href="/users" class="h4 m-2 nav-link text-white bg-danger"
+                >Admin: View Users</a
+              >
+            </li>
+            <% } %> <%} else {%>
             <li class="nav-item">
               <a href="/users/login" class="h4 m-2 nav-link text-blue bg-white"
                 >Log In</a

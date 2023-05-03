@@ -47,7 +47,7 @@ module.exports = {
         })
         .catch((error) => {
           req.flash('error', `Failed to create a new contact because: ${error.message}.`);
-          res.locals.redirect = '/contact/new';
+          res.locals.redirect = '/contacts/new';
           next();
         });
   },

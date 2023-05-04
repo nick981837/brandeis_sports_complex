@@ -6,7 +6,7 @@ const connectFlash = require('connect-flash');
 const expressSession = require('express-session');
 const methodOverride = require('method-override');
 router.use(connectFlash());
-const userController = require("../controllers/userController");
+const usersController = require("../controllers/userController");
 router.use(
     expressSession({
       secret: 'secret_passcode',
@@ -30,19 +30,19 @@ router.use(connectFlash());
 // Handle routes for job models
 router.get('/', facilityController.index, facilityController.indexView);
 router.get('/new', facilityController.new);
-router.post('/create', userController.isLoggedIn, facilityController.validate, facilityController.create, facilityController.redirectView);
+router.post('/create', usersController.isAdmin, facilityController.validate, facilityController.create, facilityController.redirectView);
 router.get('/:id', facilityController.show, facilityController.showView);
-router.get('/:id/edit', userController.isLoggedIn, facilityController.edit);
+router.get('/:id/edit', usersController.isAdmin, facilityController.edit);
 router.put(
     '/:id/update',
-    userController.isLoggedIn,
+    usersController.isAdmin,
     facilityController.validate,
     facilityController.update,
     facilityController.redirectView,
 );
 router.delete(
     '/:id/delete',
-    userController.isLoggedIn,
+    usersController.isAdmin,
     facilityController.delete,
     facilityController.redirectView,
 );

@@ -32,7 +32,7 @@ router.get('/', programController.index, programController.indexView);
 router.get('/new', programController.new);
 router.post('/create', usersController.isAdmin, programController.validate, programController.create, programController.redirectView);
 router.get('/:id', programController.show, programController.showView);
-router.get('/:id/edit', usersController.isAdmin,programController.edit);
+router.get('/:id/edit', usersController.isAdmin, programController.edit);
 router.put(
     '/:id/update',
     usersController.isAdmin,

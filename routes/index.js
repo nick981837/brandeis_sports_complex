@@ -6,12 +6,17 @@ const mainRoutes = require('./mainRoutes');
 const facilityRoutes = require('./facilityRoutes');
 const programRoutes = require('./programRoutes');
 const membershipRoutes = require('./membershipRoutes');
+const eventRoutes = require('./eventRoutes');
+const contactRoutes = require('./contactRoutes');
 
 router.use('/users', userRoutes);
 router.use('/facilities', facilityRoutes);
 router.use('/programs', programRoutes);
 router.use('/memberships', membershipRoutes);
+router.use('/events', eventRoutes);
+router.use('/contacts', contactRoutes);
 router.use('/', mainRoutes);
 router.use('/', errorRoutes);
+
 
 module.exports = router;

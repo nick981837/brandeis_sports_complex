@@ -7,6 +7,6 @@ router.get('/about', mainController.about);
 // router.get("/programs", mainController.programs);
 router.get('/events', mainController.events);
 // router.get("/membership", mainController.membership);
-router.get('/contact', mainController.contact);
+router.get('/contacts', mainController.contacts);
 router.post('/contact', mainController.respondWithForm);
 module.exports = router;

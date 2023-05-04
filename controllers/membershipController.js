@@ -126,7 +126,7 @@ module.exports = {
     ).then((user) => {
       req.flash(
           'success',
-          `${user.name} buy memberhsip successfully!`,
+          `${user.name} bought membership successfully!`,
       );
       res.locals.redirect = `/users/${res.locals.currentUser._id}`;
       next();

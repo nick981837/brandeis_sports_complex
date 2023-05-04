@@ -17,8 +17,8 @@ module.exports = {
   membership: (req, res) => {
     res.render('membership');
   },
-  contact: (req, res) => {
-    res.render('contact');
+  contacts: (req, res) => {
+    res.render('contacts');
   },
   respondWithForm: (req, res) => {
     res.render('thankYou');

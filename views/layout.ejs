@@ -53,18 +53,18 @@
               >
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="memberships"
+              <a class="h4 m-2 nav-link text-white" href="/memberships"
                 >Membership</a
               >
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="events">Events</a>
+              <a class="h4 m-2 nav-link text-white" href="/events">Events</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="about">About</a>
+              <a class="h4 m-2 nav-link text-white" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="h4 m-2 nav-link text-white" href="contact">Contact</a>
+              <a class="h4 m-2 nav-link text-white" href="/contacts">Contact</a>
             </li>
             <% if (loggedIn) { %>
             <li class="nav-item">
@@ -79,7 +79,13 @@
                 >Log out</a
               >
             </li>
-            <%} else {%>
+            <% if (currentUser.isAdmin) {%>
+            <li class="nav-item">
+              <a href="/users" class="h4 m-2 nav-link text-white bg-danger"
+                >Admin: View Users</a
+              >
+            </li>
+            <% } %> <%} else {%>
             <li class="nav-item">
               <a href="/users/login" class="h4 m-2 nav-link text-blue bg-white"
                 >Log In</a

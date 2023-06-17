@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Brandeis Sport Complex
 ## Objective:
 As a node.js/express.js develper you and your gourp-mates are asked to collaborate in this repository to create a website for sport complex of the Brandeis University to effectively showcases the facilities, programs, and events, and encourages visitors to become members.
@@ -51,3 +52,6 @@ Your website will be evaluated based on the following criteria:
 * Search Engine Optimization: Is the website optimized for search engines, with relevant keywords and meta tags?
 * Do your codes come with proper comments
 * Overall Quality: Does the website meet the objectives of the assignment and provide a positive user experience?
+=======
+# brandeis_sports_complex
+>>>>>>> 358b906ba5f27e5da0701d546d4723b71f3ed704
